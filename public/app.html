@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | TaskFlow</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/components.css">
+    <link rel="stylesheet" href="/css/layout.css">
+    <!-- View-specific styles will be added dynamically or included here -->
+    <link rel="stylesheet" href="/css/pages/dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div class="app-shell">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-logo">
+                <i data-lucide="layers"></i>
+                <span>TaskFlow</span>
+            </div>
+            
+            <nav class="nav-list">
+                <div class="nav-item">
+                    <a href="#dashboard" class="nav-link active" data-view="dashboard">
+                        <i data-lucide="layout-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#tasks" class="nav-link" data-view="tasks">
+                        <i data-lucide="list-todo"></i>
+                        <span>Tasks</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#board" class="nav-link" data-view="board">
+                        <i data-lucide="kanban"></i>
+                        <span>Kanban Board</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#calendar" class="nav-link" data-view="calendar">
+                        <i data-lucide="calendar"></i>
+                        <span>Calendar</span>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a href="#settings" class="nav-link" data-view="settings">
+                        <i data-lucide="settings"></i>
+                        <span>Settings</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" id="logout-btn" class="nav-link" style="color: var(--danger);">
+                    <i data-lucide="log-out"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-container">
+            <header class="top-bar">
+                <div class="search-wrapper" style="width: 300px;">
+                    <!-- Search bar placeholder -->
+                </div>
+                <div class="user-profile-nav" style="display: flex; align-items: center; gap: 12px;">
+                    <button id="theme-toggle" class="btn btn-ghost">
+                        <i data-lucide="sun" id="theme-icon-sun"></i>
+                        <i data-lucide="moon" id="theme-icon-moon" style="display: none;"></i>
+                    </button>
+                    <div class="user-avatar" id="user-avatar-top" style="width: 32px; height: 32px; border-radius: 50%; background: var(--bg-elevated); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px;">
+                        U
+                    </div>
+                </div>
+            </header>
+
+            <div id="view-content" class="content-area">
+                <!-- Views will be injected here -->
+                <div id="dashboard-view">
+                    <h1>Welcome back, <span id="user-name-greeting">User</span></h1>
+                    <!-- Dashboard content -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Panel -->
+        <aside class="right-panel">
+            <div style="padding: 24px; border-bottom: 1px solid var(--border);">
+                <h3 style="font-size: 16px; margin-bottom: 16px;">Activity Feed</h3>
+                <div id="activity-feed" style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Activity items -->
+                    <p style="color: var(--text-secondary); font-size: 13px;">No recent activity</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Mobile Bottom Nav -->
+        <nav class="bottom-nav">
+            <a href="#dashboard" class="nav-link active"><i data-lucide="layout-dashboard"></i></a>
+            <a href="#tasks" class="nav-link"><i data-lucide="list-todo"></i></a>
+            <a href="#calendar" class="nav-link"><i data-lucide="calendar"></i></a>
+            <a href="#settings" class="nav-link"><i data-lucide="settings"></i></a>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/api.js"></script>
+    <script src="/js/socket.js"></script>
+    <script src="/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

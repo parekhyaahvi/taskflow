@@ -1,0 +1,77 @@
+.tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-8);
+}
+
+.tasks-toolbar {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.task-row {
+    display: flex;
+    align-items: center;
+    padding: var(--space-4);
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+    transition: background-color var(--transition-fast);
+}
+
+.task-row:hover {
+    background-color: var(--bg-elevated);
+}
+
+.task-checkbox {
+    margin-right: var(--space-4);
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.task-info {
+    flex: 1;
+}
+
+.task-title {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.task-meta {
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    gap: var(--space-4);
+}
+
+.task-actions {
+    display: flex;
+    gap: var(--space-2);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.task-row:hover .task-actions {
+    opacity: 1;
+}
+
+/* Priority Badges */
+.badge-high { background-color: rgba(239, 68, 68, 0.1); color: var(--danger); }
+.badge-medium { background-color: rgba(245, 158, 11, 0.1); color: var(--warning); }
+.badge-low { background-color: rgba(59, 130, 246, 0.1); color: var(--accent-blue); }
+
+/* Status Styles */
+.task-row.completed .task-title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}

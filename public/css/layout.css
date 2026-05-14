@@ -1,0 +1,148 @@
+/* App Shell Grid */
+.app-shell {
+    display: grid;
+    grid-template-columns: 240px 1fr 320px;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-6) 0;
+    z-index: 10;
+}
+
+.sidebar-logo {
+    padding: 0 var(--space-6);
+    margin-bottom: var(--space-10);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent-cyan);
+}
+
+.nav-list {
+    flex: 1;
+}
+
+.nav-item {
+    margin-bottom: var(--space-1);
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: 12px var(--space-6);
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+    color: var(--accent-cyan);
+    background-color: rgba(0, 229, 255, 0.05);
+}
+
+.nav-link.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--accent-cyan);
+}
+
+.sidebar-footer {
+    padding: var(--space-6);
+    border-top: 1px solid var(--border);
+}
+
+/* Main Content Area */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    background-color: var(--bg-primary);
+}
+
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-8);
+    background-color: var(--bg-primary);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.content-area {
+    padding: var(--space-8);
+    flex: 1;
+}
+
+/* Right Panel (Activity/Presence) */
+.right-panel {
+    background-color: var(--bg-surface);
+    border-left: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+/* Responsive Overrides */
+@media (max-width: 1280px) {
+    .app-shell {
+        grid-template-columns: 240px 1fr;
+    }
+    .right-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 1024px) {
+    .app-shell {
+        grid-template-columns: 80px 1fr;
+    }
+    .nav-link span {
+        display: none;
+    }
+    .sidebar-logo span {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-shell {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 64px;
+    }
+    .sidebar {
+        display: none;
+    }
+    .bottom-nav {
+        display: flex;
+        background-color: var(--bg-surface);
+        border-top: 1px solid var(--border);
+        justify-content: space-around;
+        align-items: center;
+    }
+}
+
+.bottom-nav {
+    display: none;
+}
