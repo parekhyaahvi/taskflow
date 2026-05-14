@@ -38,7 +38,33 @@ exports.getTasks = async (req, res, next) => {
             data: results
         });
     } catch (error) {
+        console.error('Error in getTasks:', error);
         res.status(500).json({ success: false, error: error.message });
+    }
+};
+
+// @desc    Get single task
+// @route   GET /api/tasks/:id
+// @access  Private
+exports.getTask = async (req, res, next) => {
+    try {
+        const task = await Task.findById(req.params.id);
+
+        if (!task) {
+            return res.status(404).json({ success: false, error: 'Task not found' });
+        }
+
+        // Make sure user owns task
+        if (task.userId.toString() !== req.user.id) {
+            return res.status(401).json({ success: false, error: 'Not authorized' });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: task
+        });
+    } catch (error) {
+        res.status(400).json({ success: false, error: error.message });
     }
 };
 
@@ -55,6 +81,7 @@ exports.createTask = async (req, res, next) => {
             data: task
         });
     } catch (error) {
+        console.error('Error in createTask:', error);
         res.status(400).json({ success: false, error: error.message });
     }
 };

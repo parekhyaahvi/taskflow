@@ -20,8 +20,9 @@ const tasks = require('./routes/taskRoutes');
 
 const app = express();
 
-// Body parser
-app.use(express.json());
+// Body parser with increased limit for base64 avatar images
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Dev logging middleware
 if (process.env.NODE_ENV === 'development') {

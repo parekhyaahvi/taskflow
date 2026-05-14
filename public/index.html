@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskFlow | Work Smarter, Together</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+    <link rel="alternate icon" href="/favicon.svg?v=3">
+    <link rel="mask-icon" href="/favicon.svg?v=3" color="#D97706">
+    <link rel="apple-touch-icon" href="/favicon.svg?v=3">
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/components.css">
@@ -22,39 +26,85 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
             padding: 0 var(--space-6);
-            background: radial-gradient(circle at top center, rgba(0, 229, 255, 0.05) 0%, transparent 70%);
+            background: radial-gradient(circle at top center, rgba(250, 204, 21, 0.08) 0%, transparent 60%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+            margin-bottom: var(--space-20);
         }
 
         .hero-logo {
             display: flex;
             align-items: center;
-            gap: var(--space-3);
+            gap: var(--space-4);
             margin-bottom: var(--space-10);
-            font-size: 24px;
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .hero-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            box-shadow: 0 8px 20px rgba(250, 204, 21, 0.2);
+        }
+
+        .logo-icon i {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2.5px;
+        }
+
+        .logo-text {
+            font-size: 26px;
+            font-weight: 500;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text .accent-text {
             font-weight: 800;
             color: var(--accent-cyan);
+            margin-left: 1px;
         }
 
         .hero h1 {
-            font-size: clamp(40px, 8vw, 80px);
+            font-size: clamp(48px, 9vw, 92px);
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: var(--space-6);
-            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: var(--space-10);
+            letter-spacing: -0.05em;
         }
 
         .hero h1 span {
-            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            background: linear-gradient(to right, #FACC15, #FB923C);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
 
         .hero p {
-            font-size: clamp(16px, 2vw, 20px);
+            font-size: clamp(16px, 1.8vw, 20px);
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 650px;
             margin-bottom: var(--space-10);
             line-height: 1.6;
         }
@@ -65,58 +115,108 @@
         }
 
         .hero-visual {
-            margin-top: var(--space-20);
+            position: absolute;
+            bottom: -150px;
             width: 100%;
             max-width: 1000px;
             height: 400px;
             background-color: var(--bg-surface);
             border: 1px solid var(--border);
             border-radius: 24px;
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
-            position: relative;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
             overflow: hidden;
-            transform: perspective(1000px) rotateX(10deg);
+            transform: perspective(1200px) rotateX(15deg);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 1;
+        }
+
+        .hero-visual:hover {
+            transform: perspective(1200px) rotateX(10deg) translateY(-20px);
+            bottom: -130px;
         }
 
         .hero-visual::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, transparent 50%);
+        }
+
+        @media (max-width: 768px) {
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+            }
+            .hero-actions .btn {
+                width: 100%;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: clamp(36px, 10vw, 56px);
+            }
+            .hero-visual {
+                height: 200px;
+                bottom: -80px;
+            }
+            .hero-visual > div:last-child {
+                padding: 24px;
+                gap: 16px;
+            }
+            .hero-visual > div:last-child > div {
+                height: 150px;
+            }
         }
     </style>
 </head>
 <body>
     <section class="hero">
-        <div class="hero-logo">
-            <i data-lucide="layers"></i>
-            <span>TaskFlow</span>
-        </div>
-        
-        <h1>The next generation of <br><span>productivity.</span></h1>
-        
-        <p>A unified workspace for tasks, kanban boards, and real-time collaboration. Built for speed, designed for clarity.</p>
-        
-        <div class="hero-actions">
-            <a href="/register" class="btn btn-primary" style="padding: 16px 32px; font-size: 16px;">Get Started — it's free</a>
-            <a href="/login" class="btn btn-secondary" style="padding: 16px 32px; font-size: 16px;">Log In</a>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <div class="logo-icon">
+                    <i data-lucide="zap"></i>
+                </div>
+                <span class="logo-text">Task<span class="accent-text">Flow</span></span>
+            </div>
+            
+            <h1>The next generation of <br><span>productivity.</span></h1>
+            
+            <p>A unified workspace for tasks, kanban boards, and real-time collaboration. Built for speed, designed for clarity.</p>
+            
+            <div class="hero-actions">
+                <a href="/register" class="btn btn-primary" style="padding: 16px 32px; font-size: 16px;">Get Started — it's free</a>
+                <a href="/login" class="btn btn-secondary" style="padding: 16px 32px; font-size: 16px;">Log In</a>
+            </div>
         </div>
 
         <div class="hero-visual">
             <!-- Simulated app interface -->
-            <div style="padding: 24px; border-bottom: 1px solid var(--border); display: flex; gap: 12px;">
-                <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--danger);"></div>
-                <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--warning);"></div>
-                <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--success);"></div>
+            <div style="padding: 24px 32px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; gap: 8px;">
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #FF5F56;"></div>
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #FFBD2E;"></div>
+                    <div style="width: 12px; height: 12px; border-radius: 50%; background: #27C93F;"></div>
+                </div>
+                <div style="width: 200px; height: 12px; background: var(--bg-elevated); border-radius: 6px;"></div>
+                <div style="width: 32px; height: 32px; background: var(--accent-cyan); border-radius: 50%; opacity: 0.2;"></div>
             </div>
-            <div style="padding: 40px; display: flex; gap: 40px;">
-                <div style="flex: 1; height: 300px; background: var(--bg-elevated); border-radius: 12px; border: 1px solid var(--border);"></div>
-                <div style="flex: 1; height: 300px; background: var(--bg-elevated); border-radius: 12px; border: 1px solid var(--border);"></div>
-                <div style="flex: 1; height: 300px; background: var(--bg-elevated); border-radius: 12px; border: 1px solid var(--border);"></div>
+            <div style="padding: 48px; display: flex; gap: 32px;">
+                <div style="flex: 1; height: 320px; background: linear-gradient(to bottom, #171717, transparent); border-radius: 16px; border: 1px solid var(--border); padding: 24px;">
+                    <div style="width: 60%; height: 12px; background: var(--accent-cyan); border-radius: 6px; margin-bottom: 16px; opacity: 0.3;"></div>
+                    <div style="width: 90%; height: 12px; background: var(--text-muted); border-radius: 6px; opacity: 0.1;"></div>
+                </div>
+                <div style="flex: 1; height: 320px; background: linear-gradient(to bottom, #171717, transparent); border-radius: 16px; border: 1px solid var(--border); padding: 24px;">
+                    <div style="width: 40%; height: 12px; background: var(--accent-purple); border-radius: 6px; margin-bottom: 16px; opacity: 0.3;"></div>
+                    <div style="width: 80%; height: 12px; background: var(--text-muted); border-radius: 6px; opacity: 0.1;"></div>
+                </div>
+                <div style="flex: 1; height: 320px; background: linear-gradient(to bottom, #171717, transparent); border-radius: 16px; border: 1px solid var(--border); padding: 24px;">
+                    <div style="width: 70%; height: 12px; background: var(--accent-blue); border-radius: 6px; margin-bottom: 16px; opacity: 0.3;"></div>
+                    <div style="width: 85%; height: 12px; background: var(--text-muted); border-radius: 6px; opacity: 0.1;"></div>
+                </div>
             </div>
         </div>
     </section>
 
+    <script src="/js/effects.js"></script>
     <script>
         lucide.createIcons();
     </script>

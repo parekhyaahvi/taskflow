@@ -74,31 +74,7 @@ const SocketClient = {
     },
 
     updatePresenceUI(users) {
-        // Find or create presence container in sidebar footer
-        let container = document.getElementById('online-users');
-        if (!container) {
-            const sidebarFooter = document.querySelector('.sidebar-footer');
-            if (sidebarFooter) {
-                container = document.createElement('div');
-                container.id = 'online-users';
-                container.className = 'online-users-container';
-                sidebarFooter.prepend(container);
-            }
-        }
-
-        if (container) {
-            container.innerHTML = `
-                <div style="font-size: 11px; color: var(--text-secondary); margin-bottom: 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;">Online Now (${users.length})</div>
-                <div class="user-avatars" style="display: flex; gap: 4px; flex-wrap: wrap;">
-                    ${users.map(u => `
-                        <div class="user-avatar-mini" title="${u.fullName} (${u.currentView})">
-                            ${u.fullName.charAt(0)}
-                            <span class="status-indicator"></span>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-        }
+        // Presence UI removed as per user request
     }
 };
 

@@ -3,7 +3,10 @@
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: var(--space-6);
-    height: calc(100vh - 200px);
+    height: auto;
+    min-height: 500px;
+    width: 100%;
+    margin-top: var(--space-10);
     display: flex;
     flex-direction: column;
 }
@@ -12,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-10);
 }
 
 .calendar-grid {
@@ -25,9 +28,9 @@
 }
 
 .calendar-day-label {
-    padding: var(--space-3);
+    padding: var(--space-4);
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 700;
     color: var(--text-secondary);
     background-color: var(--bg-elevated);
@@ -35,13 +38,13 @@
 }
 
 .calendar-cell {
-    min-height: 100px;
-    padding: var(--space-2);
+    min-height: 90px;
+    padding: var(--space-3);
     border: 0.5px solid var(--border);
     background-color: var(--bg-surface);
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
 }
 
 .calendar-cell.today {
@@ -53,9 +56,9 @@
 }
 
 .calendar-date-num {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .calendar-task-bar {
@@ -77,3 +80,19 @@
 .task-bar-medium { background-color: var(--warning); color: #000; }
 .task-bar-low { background-color: var(--accent-blue); color: #fff; }
 .task-bar-completed { background-color: var(--success); color: #fff; opacity: 0.6; }
+
+@media (max-width: 768px) {
+    .calendar-container {
+        padding: var(--space-4);
+        margin-top: var(--space-6);
+        overflow-x: auto;
+    }
+    .calendar-grid {
+        min-width: 700px; /* Force horizontal scroll on mobile */
+    }
+    .calendar-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}

@@ -14,6 +14,22 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    background-color: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.clickable-card {
+    cursor: pointer !important;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
 }
 
 .stat-value {
@@ -24,12 +40,14 @@
 .stat-label {
     font-size: 14px;
     color: var(--text-secondary);
+    font-weight: 500;
 }
 
 .chart-container {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    background-color: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
     padding: var(--space-8);
     margin-top: var(--space-8);
 }

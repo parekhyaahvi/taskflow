@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { register, login, getMe } = require('../controllers/authController');
 const { protect } = require('../middleware/authMiddleware');
+const User = require('../models/User');
 
 router.post('/register', register);
 router.post('/login', login);
@@ -11,7 +12,8 @@ router.put('/update', protect, async (req, res) => {
         const user = await User.findById(req.user._id);
         if (req.body.fullName) user.fullName = req.body.fullName;
         if (req.body.username) user.username = req.body.username;
-        if (req.body.password) user.password = req.body.password;
+        if (req.body.password) user.passwordHash = req.body.password;
+        if (req.body.avatarUrl) user.avatarUrl = req.body.avatarUrl;
         
         await user.save();
         res.json({ success: true, data: user });

@@ -4,7 +4,7 @@ const CalendarView = {
     async render() {
         const viewContent = document.getElementById('view-content');
         viewContent.innerHTML = `
-            <div class="tasks-header">
+            <div class="tasks-header calendar-page-header">
                 <div>
                     <h1>Calendar</h1>
                     <p style="color: var(--text-secondary);">Track your deadlines across the month.</p>

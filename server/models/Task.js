@@ -23,7 +23,6 @@ const taskSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['Development', 'Design', 'Marketing', 'Composition', 'Others', 'Contact'],
         default: 'Others'
     },
     status: {

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register | TaskFlow</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+    <link rel="alternate icon" href="/favicon.svg?v=3">
+    <link rel="mask-icon" href="/favicon.svg?v=3" color="#D97706">
+    <link rel="apple-touch-icon" href="/favicon.svg?v=3">
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/components.css">
@@ -13,53 +17,52 @@
 </head>
 <body>
     <div class="auth-container">
-        <div class="auth-card">
-            <div class="auth-header">
-                <h1 class="auth-title">Create Account</h1>
-                <p class="auth-subtitle">Join TaskFlow and organize smarter.</p>
-            </div>
+        <a href="/" class="btn btn-ghost" style="position: absolute; top: 24px; left: 24px; text-decoration: none; display: flex; align-items: center; gap: 8px; z-index: 10;">
+            <i data-lucide="arrow-left" style="width: 18px; height: 18px;"></i>
+            Back to Home
+        </a>
+        <div class="auth-left">
+            <h1>Let's Get Started</h1>
+            <p>Experience the next evolution of team collaboration. One unified workspace for tasks, timelines, and real-time flow.</p>
+        </div>
 
-            <form id="register-form">
-                <div class="form-group">
-                    <label class="form-label" for="fullName">Full Name</label>
-                    <input type="text" id="fullName" class="form-input" placeholder="John Doe" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="username">Username</label>
-                    <input type="text" id="username" class="form-input" placeholder="johndoe" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="email">Email Address</label>
-                    <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="password">Password</label>
-                    <input type="password" id="password" class="form-input" placeholder="••••••••" required minlength="6">
-                </div>
+        <div class="auth-right">
+            <div class="auth-form-wrapper">
+                <h2>Sign up</h2>
                 
-                <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    Sign Up
-                </button>
-            </form>
+                <form id="register-form">
+                    <div class="auth-input-group">
+                        <label class="auth-input-label">Your Name</label>
+                        <input type="text" id="fullName" class="auth-underline-input" placeholder="Full Name" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label class="auth-input-label">Your Username</label>
+                        <input type="text" id="username" class="auth-underline-input" placeholder="username" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label class="auth-input-label">Your Email</label>
+                        <input type="email" id="email" class="auth-underline-input" placeholder="email@example.com" required>
+                    </div>
+                    <div class="auth-input-group">
+                        <label class="auth-input-label">Create Password</label>
+                        <input type="password" id="password" class="auth-underline-input" placeholder="••••••••" required minlength="6">
+                    </div>
+                    
+                    <button type="submit" class="auth-btn-primary">
+                        Sign up
+                    </button>
+                </form>
 
-            <div class="divider">or continue with</div>
-
-            <div class="social-auth">
-                <button class="btn btn-secondary">
-                    <i data-lucide="github"></i> GitHub
-                </button>
-                <button class="btn btn-secondary">
-                    <i data-lucide="chrome"></i> Google
-                </button>
+                <p class="auth-footer">
+                    Already a Member? <a href="/login" class="auth-link">Sign in here</a>
+                </p>
             </div>
 
-            <p class="auth-footer">
-                Already have an account? <a href="/login" class="auth-link">Log In</a>
-            </p>
         </div>
     </div>
 
     <script src="/js/auth.js"></script>
+    <script src="/js/effects.js"></script>
     <script>
         lucide.createIcons();
     </script>

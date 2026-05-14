@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | TaskFlow</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=3">
+    <link rel="alternate icon" href="/favicon.svg?v=3">
+    <link rel="mask-icon" href="/favicon.svg?v=3" color="#D97706">
+    <link rel="apple-touch-icon" href="/favicon.svg?v=3">
     <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/components.css">
@@ -19,10 +23,12 @@
     <div class="app-shell">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <div class="sidebar-logo">
-                <i data-lucide="layers"></i>
-                <span>TaskFlow</span>
-            </div>
+            <a href="/" class="sidebar-logo" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 12px; margin-bottom: 32px; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                <div class="logo-icon-mini" style="width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue)); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #000; box-shadow: 0 4px 12px rgba(250, 204, 21, 0.2);">
+                    <i data-lucide="zap" style="width: 18px; height: 18px; stroke-width: 2.5px;"></i>
+                </div>
+                <span style="font-weight: 500; font-size: 18px;">Task<span style="font-weight: 800; color: var(--accent-cyan);">Flow</span></span>
+            </a>
             
             <nav class="nav-list">
                 <div class="nav-item">
@@ -76,7 +82,7 @@
                         <i data-lucide="sun" id="theme-icon-sun"></i>
                         <i data-lucide="moon" id="theme-icon-moon" style="display: none;"></i>
                     </button>
-                    <div class="user-avatar" id="user-avatar-top" style="width: 32px; height: 32px; border-radius: 50%; background: var(--bg-elevated); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px;">
+                    <div class="user-avatar" id="user-avatar-top" style="width: 32px; height: 32px; border-radius: 50%; background: var(--bg-elevated); display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 12px; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         U
                     </div>
                 </div>
@@ -85,22 +91,11 @@
             <div id="view-content" class="content-area">
                 <!-- Views will be injected here -->
                 <div id="dashboard-view">
-                    <h1>Welcome back, <span id="user-name-greeting">User</span></h1>
+                    <h1>Welcome back, <span id="user-name-greeting">User</span>!</h1>
                     <!-- Dashboard content -->
                 </div>
             </div>
         </main>
-
-        <!-- Right Panel -->
-        <aside class="right-panel">
-            <div style="padding: 24px; border-bottom: 1px solid var(--border);">
-                <h3 style="font-size: 16px; margin-bottom: 16px;">Activity Feed</h3>
-                <div id="activity-feed" style="display: flex; flex-direction: column; gap: 16px;">
-                    <!-- Activity items -->
-                    <p style="color: var(--text-secondary); font-size: 13px;">No recent activity</p>
-                </div>
-            </div>
-        </aside>
 
         <!-- Mobile Bottom Nav -->
         <nav class="bottom-nav">
@@ -115,6 +110,7 @@
     <script src="/js/utils.js"></script>
     <script src="/js/api.js"></script>
     <script src="/js/socket.js"></script>
+    <script src="/js/effects.js"></script>
     <script src="/js/main.js"></script>
     <script>
         lucide.createIcons();

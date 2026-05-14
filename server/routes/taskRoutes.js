@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getTasks, createTask, updateTask, deleteTask } = require('../controllers/taskController');
+const { getTasks, getTask, createTask, updateTask, deleteTask } = require('../controllers/taskController');
 const { protect } = require('../middleware/authMiddleware');
 
 router.use(protect); // All task routes are protected
@@ -10,6 +10,7 @@ router.route('/')
     .post(createTask);
 
 router.route('/:id')
+    .get(getTask)
     .patch(updateTask)
     .delete(deleteTask);
 

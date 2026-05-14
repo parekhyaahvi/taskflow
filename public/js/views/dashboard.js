@@ -5,26 +5,26 @@ const DashboardView = {
         
         viewContent.innerHTML = `
             <div class="dashboard-header">
-                <h1>Welcome back, ${user ? user.fullName.split(' ')[0] : 'User'}</h1>
+                <h1>Welcome back, ${user ? user.fullName.split(' ')[0] : 'User'}!</h1>
                 <p style="color: var(--text-secondary);">Here's a summary of your workspace.</p>
             </div>
 
             <div class="stats-grid" id="dashboard-stats">
-                <div class="card stat-card">
+                <div class="card stat-card clickable-card" onclick="window.location.hash = 'tasks'">
                     <span class="stat-label">Total Tasks</span>
                     <span class="stat-value" id="stat-total" style="color: var(--accent-cyan);">0</span>
                 </div>
-                <div class="card stat-card">
+                <div class="card stat-card clickable-card" onclick="localStorage.setItem('taskFilters', JSON.stringify({status: 'Completed'})); window.location.hash = 'tasks'">
                     <span class="stat-label">Completed</span>
-                    <span class="stat-value" id="stat-completed" style="color: var(--success);">0</span>
+                    <span class="stat-value" id="stat-completed" style="color: #10B981;">0</span>
                 </div>
-                <div class="card stat-card">
+                <div class="card stat-card clickable-card" onclick="localStorage.setItem('taskFilters', JSON.stringify({status: 'In Progress'})); window.location.hash = 'tasks'">
                     <span class="stat-label">In Progress</span>
-                    <span class="stat-value" id="stat-pending" style="color: var(--accent-purple);">0</span>
+                    <span class="stat-value" id="stat-in-progress" style="color: #3B82F6;">0</span>
                 </div>
-                <div class="card stat-card">
+                <div class="card stat-card clickable-card" onclick="localStorage.setItem('taskFilters', JSON.stringify({priority: 'High'})); window.location.hash = 'tasks'">
                     <span class="stat-label">High Priority</span>
-                    <span class="stat-value" id="stat-high" style="color: var(--danger);">0</span>
+                    <span class="stat-value" id="stat-high" style="color: #EF4444;">0</span>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@ const DashboardView = {
             
             document.getElementById('stat-total').textContent = tasks.length;
             document.getElementById('stat-completed').textContent = tasks.filter(t => t.status === 'Completed').length;
-            document.getElementById('stat-pending').textContent = tasks.filter(t => t.status === 'In Progress').length;
+            document.getElementById('stat-in-progress').textContent = tasks.filter(t => t.status === 'In Progress').length;
             document.getElementById('stat-high').textContent = tasks.filter(t => t.priority === 'High').length;
 
             this.renderChart(tasks);
@@ -67,10 +67,14 @@ const DashboardView = {
                 datasets: [{
                     label: 'Completed Tasks',
                     data: data,
-                    borderColor: '#00E5FF',
-                    backgroundColor: 'rgba(0, 229, 255, 0.1)',
+                    borderColor: '#FACC15',
+                    backgroundColor: 'rgba(250, 204, 21, 0.1)',
                     fill: true,
-                    tension: 0.4
+                    tension: 0.4,
+                    pointBackgroundColor: '#FACC15',
+                    pointBorderColor: '#FFF',
+                    pointHoverRadius: 6,
+                    pointRadius: 4
                 }]
             },
             options: {
@@ -82,12 +86,12 @@ const DashboardView = {
                 scales: {
                     y: {
                         beginAtZero: true,
-                        grid: { color: '#30363D' },
-                        ticks: { color: '#8B949E' }
+                        grid: { color: getComputedStyle(document.body).getPropertyValue('--border').trim() || 'rgba(0,0,0,0.1)' },
+                        ticks: { color: getComputedStyle(document.body).getPropertyValue('--text-secondary').trim() || '#666' }
                     },
                     x: {
                         grid: { display: false },
-                        ticks: { color: '#8B949E' }
+                        ticks: { color: getComputedStyle(document.body).getPropertyValue('--text-secondary').trim() || '#666' }
                     }
                 }
             }

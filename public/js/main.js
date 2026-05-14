@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.addEventListener('click', () => Utils.toggleTheme());
     }
 
+    if (userAvatarTop) {
+        userAvatarTop.addEventListener('click', () => {
+            window.location.hash = '#settings';
+        });
+    }
+
     if (logoutBtn) {
         logoutBtn.addEventListener('click', (e) => {
             e.preventDefault();
@@ -41,7 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (user) {
         if (userNameGreeting) userNameGreeting.textContent = user.fullName.split(' ')[0];
-        if (userAvatarTop) userAvatarTop.textContent = user.fullName.charAt(0).toUpperCase();
+        if (userAvatarTop) {
+            if (user.avatarUrl) {
+                userAvatarTop.innerHTML = `<img src="${user.avatarUrl}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">`;
+            } else {
+                userAvatarTop.textContent = user.fullName.charAt(0).toUpperCase();
+            }
+        }
     }
 
     // 4. Routing
