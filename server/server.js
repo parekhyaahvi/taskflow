@@ -73,9 +73,11 @@ const io = socketio(server, {
 // Socket configuration
 require('./config/socket')(io);
 
-server.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    server.listen(PORT, () => {
+        console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    });
+}
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
@@ -83,3 +85,6 @@ process.on('unhandledRejection', (err, promise) => {
     // Close server & exit process
     server.close(() => process.exit(1));
 });
+
+// Export the Express API for Vercel Serverless Functions
+module.exports = app;
