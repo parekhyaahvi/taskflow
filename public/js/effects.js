@@ -39,10 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
             seg.x += (prevX - seg.x) * seg.factor;
             seg.y += (prevY - seg.y) * seg.factor;
 
-            const el = document.getElementById(`glow-${i+1}`);
-            if (el) {
-                el.style.transform = `translate3d(${seg.x}vw, ${seg.y}vh, 0) translate3d(-50%, -50%, 0)`;
-            }
+            document.documentElement.style.setProperty(`--glow-${i+1}-x`, `${seg.x}%`);
+            document.documentElement.style.setProperty(`--glow-${i+1}-y`, `${seg.y}%`);
         });
 
         // Apply opacity ONLY to the background glow via CSS variable
