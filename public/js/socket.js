@@ -1,7 +1,11 @@
-const socket = io();
+const socket = typeof io !== 'undefined' ? io() : null;
 
 const SocketClient = {
     init() {
+        if (!socket) {
+            console.warn('Real-time server (Socket.io) not available. This is expected on Vercel.');
+            return;
+        }
         const user = JSON.parse(localStorage.getItem('user'));
 
         socket.on('connect', () => {
@@ -44,6 +48,7 @@ const SocketClient = {
     },
 
     authenticate(user) {
+        if (!socket) return;
         socket.emit('authenticate', {
             userId: user._id,
             fullName: user.fullName,
@@ -52,18 +57,22 @@ const SocketClient = {
     },
 
     updateView(view) {
+        if (!socket) return;
         socket.emit('updateView', view);
     },
 
     joinTask(taskId) {
+        if (!socket) return;
         socket.emit('joinRoom', { taskId });
     },
 
     leaveTask(taskId) {
+        if (!socket) return;
         socket.emit('leaveRoom', { taskId });
     },
 
     emitUpdate(taskId, field, value) {
+        if (!socket) return;
         const user = JSON.parse(localStorage.getItem('user'));
         socket.emit('taskUpdate', { 
             taskId, 
