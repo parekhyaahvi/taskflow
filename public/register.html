@@ -43,9 +43,12 @@
                         <label class="auth-input-label">Your Email</label>
                         <input type="email" id="email" class="auth-underline-input" placeholder="email@example.com" required>
                     </div>
-                    <div class="auth-input-group">
+                    <div class="auth-input-group" style="position: relative;">
                         <label class="auth-input-label">Create Password</label>
                         <input type="password" id="password" class="auth-underline-input" placeholder="••••••••" required minlength="6">
+                        <button type="button" id="toggle-password" style="position: absolute; right: 0; bottom: 8px; background: none; border: none; cursor: pointer; color: var(--text-secondary); padding: 0;">
+                            <i data-lucide="eye" style="width: 18px; height: 18px;"></i>
+                        </button>
                     </div>
                     
                     <button type="submit" class="auth-btn-primary">
