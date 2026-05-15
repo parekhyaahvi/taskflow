@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     showError(data.error);
                 }
             } catch (error) {
-                showError('Something went wrong. Please try again.');
+                console.error('Login error:', error);
+                showError('Login failed: The server might be down or your database connection is failing. Check your Vercel logs.');
             }
         });
     }
