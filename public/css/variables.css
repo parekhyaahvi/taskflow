@@ -56,22 +56,46 @@
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-primary);
-    background-image: 
-        radial-gradient(circle at var(--glow-1-x) var(--glow-1-y), rgba(250, 204, 21, calc(0.25 * var(--glow-opacity))) 0%, transparent 10%),
-        radial-gradient(circle at var(--glow-2-x) var(--glow-2-y), rgba(253, 224, 71, calc(0.22 * var(--glow-opacity))) 0%, transparent 12%),
-        radial-gradient(circle at var(--glow-3-x) var(--glow-3-y), rgba(245, 158, 11, calc(0.20 * var(--glow-opacity))) 0%, transparent 15%),
-        radial-gradient(circle at var(--glow-4-x) var(--glow-4-y), rgba(251, 146, 60, calc(0.18 * var(--glow-opacity))) 0%, transparent 18%),
-        radial-gradient(circle at var(--glow-5-x) var(--glow-5-y), rgba(249, 115, 22, calc(0.15 * var(--glow-opacity))) 0%, transparent 20%),
-        radial-gradient(circle at var(--glow-6-x) var(--glow-6-y), rgba(234, 88, 12, calc(0.12 * var(--glow-opacity))) 0%, transparent 22%),
-        radial-gradient(circle at var(--glow-7-x) var(--glow-7-y), rgba(217, 119, 6, calc(0.10 * var(--glow-opacity))) 0%, transparent 25%),
-        radial-gradient(circle at var(--glow-8-x) var(--glow-8-y), rgba(180, 83, 9, calc(0.08 * var(--glow-opacity))) 0%, transparent 28%),
-        radial-gradient(circle at var(--glow-9-x) var(--glow-9-y), rgba(146, 64, 14, calc(0.06 * var(--glow-opacity))) 0%, transparent 30%),
-        radial-gradient(circle at var(--glow-10-x) var(--glow-10-y), rgba(120, 53, 15, calc(0.04 * var(--glow-opacity))) 0%, transparent 35%);
     background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.5;
     overflow-x: hidden;
 }
+
+/* Optimized Glow Effects */
+.glow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg-primary);
+}
+
+.glow-segment {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: var(--glow-opacity);
+    will-change: transform;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.glow-1 { background: radial-gradient(circle, rgba(250, 204, 21, 0.15) 0%, transparent 70%); z-index: 10; }
+.glow-2 { background: radial-gradient(circle, rgba(253, 224, 71, 0.12) 0%, transparent 70%); z-index: 9; }
+.glow-3 { background: radial-gradient(circle, rgba(245, 158, 11, 0.10) 0%, transparent 70%); z-index: 8; }
+.glow-4 { background: radial-gradient(circle, rgba(251, 146, 60, 0.08) 0%, transparent 70%); z-index: 7; }
+.glow-5 { background: radial-gradient(circle, rgba(249, 115, 22, 0.07) 0%, transparent 70%); z-index: 6; }
+.glow-6 { background: radial-gradient(circle, rgba(234, 88, 12, 0.06) 0%, transparent 70%); z-index: 5; }
+.glow-7 { background: radial-gradient(circle, rgba(217, 119, 6, 0.05) 0%, transparent 70%); z-index: 4; }
+.glow-8 { background: radial-gradient(circle, rgba(180, 83, 9, 0.04) 0%, transparent 70%); z-index: 3; }
+.glow-9 { background: radial-gradient(circle, rgba(146, 64, 14, 0.03) 0%, transparent 70%); z-index: 2; }
+.glow-10 { background: radial-gradient(circle, rgba(120, 53, 15, 0.02) 0%, transparent 70%); z-index: 1; }
 
 [data-theme="light"] {
     --bg-primary: #DDC5A3;
