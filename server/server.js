@@ -83,7 +83,9 @@ if (process.env.NODE_ENV !== 'production') {
 process.on('unhandledRejection', (err, promise) => {
     console.log(`Error: ${err.message}`);
     // Close server & exit process
-    server.close(() => process.exit(1));
+    if (!process.env.VERCEL) {
+        server.close(() => process.exit(1));
+    }
 });
 
 // Export the Express API for Vercel Serverless Functions
