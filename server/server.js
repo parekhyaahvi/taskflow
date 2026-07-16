@@ -12,7 +12,6 @@ dotenv.config();
 
 // Connect to database
 const connectDB = require('./config/db');
-connectDB();
 
 // Route files
 const auth = require('./routes/authRoutes');
@@ -39,6 +38,16 @@ app.use(cors());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, '../public')));
+
+// Database connection middleware for Serverless
+app.use('/api', async (req, res, next) => {
+    try {
+        await connectDB();
+        next();
+    } catch (err) {
+        next(err);
+    }
+});
 
 // Mount routes
 app.use('/api/auth', auth);
